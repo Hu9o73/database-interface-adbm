@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="my-4">Most Popular Songs Per Artist</h1>
+
+  <!-- Button to refresh the results -->
+  <button class="btn btn-primary mb-4" (click)="refreshResults()">Refresh</button>
+
+  <!-- Display the results in a table -->
+  <div *ngIf="results | async as data; else loading">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Artist Name</th>
+          <th>Song Name</th>
+          <th>Popularity</th>
+          <th>Danceability</th>
+          <th>Energy</th>
+          <th>Valence</th>
+          <th>Popularity Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data.results">
+          <td>{{ item.ARTIST_NAME }}</td>
+          <td>{{ item.SONG_NAME }}</td>
+          <td>{{ item.POPULARITY }}</td>
+          <td>{{ item.DANCEABILITY }}</td>
+          <td>{{ item.ENERGY }}</td>
+          <td>{{ item.VALENCE }}</td>
+          <td>{{ item.POPULARITY_RANK }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Loading message -->
+  <ng-template #loading>
+    <div class="alert alert-info">
+      Loading data...
+    </div>
+  </ng-template>
+</div>

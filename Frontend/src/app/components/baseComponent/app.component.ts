@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 
 // Bootstrap imports

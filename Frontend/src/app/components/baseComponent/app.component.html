@@ -1,5 +1,3 @@
-<router-outlet></router-outlet>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
     <a class="navbar-brand" href="/">Navbar</a> 
 
@@ -16,7 +14,7 @@
             <a ngbDropdownToggle id="queriesMenu" class="nav-link dropdown-toggle" role="button"> Queries </a>
 
             <div ngbDropdownMenu aria-labelledby="queriesMenu" class="dropdown-menu"> 
-                <a class="dropdown-item" href="/">Query 1</a>
+                <a class="dropdown-item" routerLink="queryA">Query 1</a>
                 <a class="dropdown-item" href="/">Query 2</a>
                 <a class="dropdown-item" href="/">Query 3</a>
                 <a class="dropdown-item" href="/">Query 4</a>
@@ -27,4 +25,6 @@
         </li>
         
     </ul>
-</nav>   
+</nav>
+
+<router-outlet></router-outlet>

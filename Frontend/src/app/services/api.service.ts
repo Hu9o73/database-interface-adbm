@@ -15,7 +15,7 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/api/liveness`);
   }
 
-  testQuery(): Observable<any>{
+  QueryA(): Observable<any>{
     return this.http.get(`${this.apiUrl}/api/database/most-popular-per-artist`);
   }
 }
