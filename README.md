@@ -23,7 +23,7 @@ Front/Back-end small project to make the interactions with an oracle database ea
 - You can now access `localhost:3000/api-docs` to check the backend's api documentation.
 - `localhost:3000/api/liveness` will return OK if the server is running.
 
-### Frontend (Not yet implemented !)
+### Frontend
 
 - In another Terminal window, navigate to the Frontend File:
     - Type `npm install` to download all the dependencies.
