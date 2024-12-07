@@ -1,0 +1,30 @@
+<router-outlet></router-outlet>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+    <a class="navbar-brand" href="/">Navbar</a> 
+
+    <ul class="navbar-nav mr-auto"> 
+
+        <li class="nav-item home">
+            <a class="dropdown-item" routerLink="/">
+                <fa-icon [icon]='faHome'/> 
+                Home
+            </a>
+        </li>
+
+        <li ngbDropdown class="nav-item dropdown"> 
+            <a ngbDropdownToggle id="queriesMenu" class="nav-link dropdown-toggle" role="button"> Queries </a>
+
+            <div ngbDropdownMenu aria-labelledby="queriesMenu" class="dropdown-menu"> 
+                <a class="dropdown-item" href="/">Query 1</a>
+                <a class="dropdown-item" href="/">Query 2</a>
+                <a class="dropdown-item" href="/">Query 3</a>
+                <a class="dropdown-item" href="/">Query 4</a>
+                <a class="dropdown-item" href="/">Query 5</a>
+                <a class="dropdown-item" href="/">Query 6</a>
+            </div>
+
+        </li>
+        
+    </ul>
+</nav>   
