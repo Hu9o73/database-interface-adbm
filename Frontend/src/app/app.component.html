@@ -1,1 +1,23 @@
 <router-outlet></router-outlet>
+
+<div *ngIf="jsonData?.results">
+    <h2>Results</h2>
+    <div *ngFor="let item of jsonData.results">
+        <h3>Artist: {{ item.ARTIST_NAME }}</h3>
+        <ul>
+            <li><strong>Song Name:</strong> {{ item.SONG_NAME }}</li>
+            <li><strong>Popularity:</strong> {{ item.POPULARITY }}</li>
+            <li><strong>Danceability:</strong> {{ item.DANCEABILITY }}</li>
+            <li><strong>Energy:</strong> {{ item.ENERGY }}</li>
+            <li><strong>Valence:</strong> {{ item.VALENCE }}</li>
+            <li><strong>Popularity Rank:</strong> {{ item.POPULARITY_RANK }}</li>
+        </ul>
+    </div>
+</div>
+  
+<div *ngIf="!jsonData?.results">
+    <p>No data available.</p>
+</div>
+  
+  <!-- Trigger the test query -->
+  <button (click)="testQueryOnComponent()">Run Test Query</button>

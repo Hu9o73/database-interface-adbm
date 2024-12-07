@@ -10,8 +10,20 @@ import dbQueries from "./api/dbQueriesEndpoints";
 import sequelize from "./ConfigFiles/dbConfig";
 import { testDatabaseConnection } from "./ConfigFiles/dbUtils";
 
+const cors = require('cors');
+
 const app: Express = express();
 const port = 3000;
+
+// CORS for any origin: 
+// app.use(cors());
+
+// CORS for specific origins
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Swagger setup
 const swaggerOptions = {

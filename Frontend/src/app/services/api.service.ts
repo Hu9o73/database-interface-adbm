@@ -14,4 +14,8 @@ export class ApiService {
   isAppLive(): Observable<any>{
     return this.http.get(`${this.apiUrl}/api/liveness`);
   }
+
+  testQuery(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/most-popular-per-artist`);
+  }
 }
