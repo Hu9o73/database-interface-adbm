@@ -1,0 +1,68 @@
+<div class="container">
+    <h1 class="my-4">Songs trend over time</h1>
+  
+    <!-- Button to refresh the results -->
+    <button class="btn btn-primary mb-4" (click)="refreshResults()">Refresh</button>
+    
+    <!-- Display the results in a table -->
+    <div *ngIf="results | async as data; else loading">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+              <th>
+                Release Date
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('RELEASE_DATE', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'RELEASE_DATE' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'RELEASE_DATE' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Song Name
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('SONG_NAME', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'SONG_NAME' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'SONG_NAME' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Popularity
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('POPULARITY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Moving Avg. Pop.
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('MOVING_AVG_POPULARITY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'MOVING_AVG_POPULARITY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'MOVING_AVG_POPULARITY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data.results">
+            <td>{{ item.RELEASE_DATE }}</td>
+            <td>{{ item.SONG_NAME }}</td>
+            <td>{{ item.POPULARITY }}</td>
+            <td>{{ item.MOVING_AVG_POPULARITY }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Loading message -->
+    <ng-template #loading>
+      <div class="alert alert-info">
+        Loading data...
+      </div>
+    </ng-template>
+  </div>
+  

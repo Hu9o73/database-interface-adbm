@@ -22,4 +22,20 @@ export class ApiService {
   QueryB(): Observable<any>{
     return this.http.get(`${this.apiUrl}/api/database/artist-above-average-popularity`);
   }
+
+  QueryC(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/song-trend-over-time`);
+  }
+
+  QueryD(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/top-artists`);
+  }
+
+  QueryE(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/song-rank-within-category`);
+  }
+
+  QueryF(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/popular-high-energy`);
+  }
 }
