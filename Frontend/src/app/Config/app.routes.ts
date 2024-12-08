@@ -13,6 +13,7 @@ import { QueryCComponent } from '../components/queries/query-c/query-c.component
 import { QueryDComponent } from '../components/queries/query-d/query-d.component';
 import { QueryEComponent } from '../components/queries/query-e/query-e.component';
 import { QueryFComponent } from '../components/queries/query-f/query-f.component';
+import { RecommendationsProcComponent } from '../components/recommendations-proc/recommendations-proc.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -22,5 +23,6 @@ export const routes: Routes = [
     {path:'queryC', component: QueryCComponent},
     {path:'queryD', component: QueryDComponent},
     {path:'queryE', component: QueryEComponent},
-    {path:'queryF', component: QueryFComponent}
+    {path:'queryF', component: QueryFComponent},
+    {path:'recommendations', component: RecommendationsProcComponent}
 ];

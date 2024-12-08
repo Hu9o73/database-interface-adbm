@@ -38,4 +38,8 @@ export class ApiService {
   QueryF(): Observable<any>{
     return this.http.get(`${this.apiUrl}/api/database/popular-high-energy`);
   }
+
+  ProcA(minPop:number, energy:number, danceability:number): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/recommendations?minPop=${minPop}&energy=${energy}&danceability=${danceability}`);
+  }
 }

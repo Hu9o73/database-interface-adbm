@@ -1,0 +1,107 @@
+<div class="container">
+    <h1 class="my-4">Need a recommendation ?</h1>
+    
+    <!-- Inputs for minPop, energy, and danceability -->
+    <div class="form-row mb-4">
+        <div class="col">
+        <label for="minPop">Min Popularity</label>
+        <input type="number" class="form-control" id="minPop" [(ngModel)]="minPop" placeholder="Enter min popularity" />
+        </div>
+        <div class="col">
+        <label for="energy">Energy</label>
+        <input type="number" class="form-control" id="energy" [(ngModel)]="energy" placeholder="Enter energy" />
+        </div>
+        <div class="col">
+        <label for="danceability">Danceability</label>
+        <input type="number" class="form-control" id="danceability" [(ngModel)]="danceability" placeholder="Enter danceability" />
+        </div>
+    </div>
+
+    <!-- Button to refresh the results -->
+    <button class="btn btn-primary mb-4" (click)="refreshResults(minPop, energy, danceability)">Refresh</button>
+    
+    <!-- Display the results in a table -->
+    <div *ngIf="results | async as data; else loading">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+              <th>
+                Song Name
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('SONG_NAME', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'SONG_NAME' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'SONG_NAME' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Artist Name
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('ARTIST_NAME', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'ARTIST_NAME' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'ARTIST_NAME' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Popularity
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('POPULARITY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Energy
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('ENERGY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'ENERGY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'ENERGY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Danceability
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('DANCEABILITY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'DANCEABILITY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'DANCEABILITY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Score
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('SCORE', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'SCORE' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'SCORE' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data.results">
+            <td>{{ item.SONG_NAME }}</td>
+            <td>{{ item.ARTIST_NAME}}</td>
+            <td>{{ item.POPULARITY }}</td>
+            <td>{{ item.ENERGY }}</td>
+            <td>{{ item.DANCEABILITY }}</td>
+            <td>{{ item.SCORE }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Loading message -->
+    <ng-template #loading>
+      <div class="alert alert-info">
+        No recommendation found !<br>
+        Try changing the parameters.<hr>
+
+        (For instance, it works with 70/800/700)
+      </div>
+    </ng-template>
+  </div>
+  

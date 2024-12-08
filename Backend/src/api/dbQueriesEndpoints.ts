@@ -1,6 +1,7 @@
 import {Router, Request, Response} from 'express'
 import sequelize from '../ConfigFiles/dbConfig';
 import { QueryTypes } from 'sequelize';
+import oracledb from 'oracledb';
 
 const router = Router()
 
@@ -230,6 +231,47 @@ router.get('/api/database/popular-high-energy', (req: Request, res: Response) =>
             console.error('Error executing query:', error);
             res.status(500).json({ error: 'An error occurred.' });
           });
+});
+
+
+
+
+
+// Procedure 3
+router.get('/api/database/recommendations', (req: Request, res: Response) => {
+    
+    // Extract the parameters from the query string
+    const minPop = parseInt(req.query.minPop as string);
+    const energy = parseInt(req.query.energy as string);
+    const danceability = parseInt(req.query.danceability as string);
+
+    // Validate the parameters to ensure they are numbers
+    if (isNaN(minPop) || isNaN(energy) || isNaN(danceability)) {
+        res.status(400).json({ error: 'Invalid parameters. All parameters must be numbers.' });
+        return;
+    }
+
+    // Execute the query with the provided parameters
+    sequelize
+        .query(
+            `SELECT * 
+            FROM TABLE(generate_playlist_recommendations_func(:param1, :param2, :param3))`,
+            {
+                replacements: { param1: minPop, param2: energy, param3: danceability },
+                type: QueryTypes.SELECT,
+            }
+        )
+        .then((results) => {
+            if (results && results.length > 0) {
+                res.status(200).json({ results });
+            } else {
+                res.status(404).json({ error: 'No results found.' });
+            }
+        })
+        .catch((error) => {
+            console.error('Error executing query:', error);
+            res.status(500).json({ error: 'An error occurred while executing the query.' });
+        });
 });
 
 
