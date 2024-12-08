@@ -469,7 +469,7 @@
  *       This endpoint retrieves songs with an energy level above 600 and a popularity score above 75.
  *       The results are sorted by popularity in descending order and include song name, artist name, energy, danceability, and popularity.
  *     tags:
- *       - Songs
+ *       - Database
  *     responses:
  *       200:
  *         description: Successfully retrieved popular and energetic songs.
