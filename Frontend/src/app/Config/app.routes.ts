@@ -11,6 +11,7 @@ import { QueryAComponent } from '../components/queries/query-a/query-a.component
 import { QueryBComponent } from '../components/queries/query-b/query-b.component';
 import { QueryCComponent } from '../components/queries/query-c/query-c.component';
 import { QueryDComponent } from '../components/queries/query-d/query-d.component';
+import { QueryEComponent } from '../components/queries/query-e/query-e.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -18,5 +19,6 @@ export const routes: Routes = [
     {path:'queryA', component: QueryAComponent},
     {path:'queryB', component: QueryBComponent},
     {path:'queryC', component: QueryCComponent},
-    {path:'queryD', component: QueryDComponent}
+    {path:'queryD', component: QueryDComponent},
+    {path:'queryE', component: QueryEComponent}
 ];

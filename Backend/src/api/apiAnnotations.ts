@@ -384,18 +384,21 @@
  * @swagger
  * /api/database/song-rank-within-category:
  *   get:
- *     summary: Retrieve song rankings within popularity categories.
- *     description: |
- *       This endpoint retrieves songs classified into popularity categories (`High`, `Medium`, `Low`) based on their popularity scores.
- *       It includes:
- *       - Song name, artist name, popularity score, energy, and danceability.
- *       - Ranking of songs within their respective categories, ordered by popularity.
- *       - Results are filtered for the `Low` popularity category.
+ *     summary: Retrieve songs ranked within a specified popularity category.
+ *     description: Fetch songs grouped by popularity categories (`High`, `Medium`, or `Low`) and ranked within their category.
  *     tags:
  *       - Database
+ *     parameters:
+ *       - name: category
+ *         in: query
+ *         required: true
+ *         description: The popularity category to filter songs by (`High`, `Medium`, or `Low`).
+ *         schema:
+ *           type: string
+ *           enum: [High, Medium, Low]
  *     responses:
  *       200:
- *         description: Successfully retrieved song rankings within categories.
+ *         description: A list of songs within the specified popularity category.
  *         content:
  *           application/json:
  *             schema:
@@ -408,54 +411,31 @@
  *                     properties:
  *                       POPULARITY_CATEGORY:
  *                         type: string
- *                         description: The popularity category of the song (`High`, `Medium`, `Low`).
- *                         example: "Low"
+ *                         example: High
  *                       SONG_NAME:
  *                         type: string
- *                         description: Name of the song.
- *                         example: "Waiting Game"
+ *                         example: "Song Title"
  *                       ARTIST_NAME:
  *                         type: string
- *                         description: Name of the artist.
- *                         example: "Parson James"
+ *                         example: "Artist Name"
  *                       POPULARITY:
  *                         type: integer
- *                         description: Popularity score of the song.
- *                         example: 49
+ *                         example: 85
  *                       ENERGY:
- *                         type: integer
- *                         description: Energy level of the song.
- *                         example: 307
+ *                         type: number
+ *                         example: 750
  *                       DANCEABILITY:
- *                         type: integer
- *                         description: Danceability level of the song.
- *                         example: 393
+ *                         type: number
+ *                         example: 630
  *                       CATEGORY_RANK:
  *                         type: integer
- *                         description: Rank of the song within its popularity category.
  *                         example: 1
+ *       400:
+ *         description: Invalid category value.
  *       404:
- *         description: No results found.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   description: Error message indicating no results were found.
- *                   example: "Query didn't yield any result."
+ *         description: No results found for the specified category.
  *       500:
- *         description: Server error.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   description: Error message for a server-side issue.
- *                   example: "An error occurred."
+ *         description: Internal server error.
  */
 
 

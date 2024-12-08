@@ -1,1 +1,102 @@
-<p>query-e works!</p>
+<div class="container">
+    <h1 class="my-4">Top songs per popularity category</h1>
+  
+    <!-- Buttons to select category -->
+    <div class="btn-group mb-4">
+        <button class="btn btn-success" (click)="refreshResults('Low')">Low Popularity</button>
+        <button class="btn btn-success" (click)="refreshResults('Medium')">Medium Popularity</button>
+        <button class="btn btn-success" (click)="refreshResults('High')">High Popularity</button>
+    </div>
+    
+    <!-- Display the results in a table -->
+    <div *ngIf="results | async as data; else loading">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+              <th>
+                Popularity Category
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('POPULARITY_CATEGORY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY_CATEGORY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY_CATEGORY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Song Name
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('SONG_NAME', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'SONG_NAME' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'SONG_NAME' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Artist Name
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('ARTIST_NAME', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'ARTIST_NAME' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'ARTIST_NAME' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Popularity
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('POPULARITY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'POPULARITY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Energy
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('ENERGY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'ENERGY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'ENERGY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Danceability
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('DANCEABILITY', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'DANCEABILITY' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'DANCEABILITY' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+              <th>
+                Category Rank
+                <br>
+                <button class="btn btn-secondary" (click)="sortByColumn('CATEGORY_RANK', data.results)">
+                  <br>
+                  <fa-icon *ngIf="sortedColumn === 'CATEGORY_RANK' && sortOrder === 'asc'" [icon]='faSortUp'></fa-icon>
+                  <fa-icon *ngIf="sortedColumn === 'CATEGORY_RANK' && sortOrder === 'desc'" [icon]='faSortDown'></fa-icon>
+                </button>
+              </th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data.results">
+            <td>{{ item.POPULARITY_CATEGORY }}</td>
+            <td>{{ item.SONG_NAME}}</td>
+            <td>{{ item.ARTIST_NAME }}</td>
+            <td>{{ item.POPULARITY }}</td>
+            <td>{{ item.ENERGY }}</td>
+            <td>{{ item.DANCEABILITY }}</td>
+            <td>{{ item.CATEGORY_RANK }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Loading message -->
+    <ng-template #loading>
+      <div class="alert alert-info">
+        Loading data...
+      </div>
+    </ng-template>
+  </div>
+  

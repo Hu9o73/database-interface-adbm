@@ -1,5 +1,6 @@
-import express, {Router, Request, Response} from 'express'
+import {Router, Request, Response} from 'express'
 import sequelize from '../ConfigFiles/dbConfig';
+import { QueryTypes } from 'sequelize';
 
 const router = Router()
 
@@ -142,6 +143,16 @@ router.get('/api/database/top-artists', (req: Request, res: Response) => {
 
 // Query 5
 router.get('/api/database/song-rank-within-category', (req: Request, res: Response) => {
+    
+    const category = req.query.category as string;
+
+    // Validate the category to ensure it's one of the allowed values
+    const allowedCategories = ['High', 'Medium', 'Low'];
+    if (!allowedCategories.includes(category)) {
+        res.status(400).json({ error: 'Invalid category. Must be High, Medium, or Low.' });
+        return;
+    }
+    
     sequelize
         .query(
             `
@@ -167,9 +178,12 @@ router.get('/api/database/song-rank-within-category', (req: Request, res: Respon
             JOIN albums alb ON s.album_id = alb.album_id
             JOIN artists art ON alb.artist_id = art.artist_id
             JOIN audio_features af ON s.song_id = af.song_id
-            WHERE pc.popularity_category = 'Low'
+            WHERE pc.popularity_category = :category
             ORDER BY pc.popularity_category, category_rank;
-            `
+            `,
+            {
+                replacements: {category}
+            }
         )
         .then(([results]: any) => {
             if (results && results.length > 0) {

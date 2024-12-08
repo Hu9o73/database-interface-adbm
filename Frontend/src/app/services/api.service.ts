@@ -31,8 +31,8 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/api/database/top-artists`);
   }
 
-  QueryE(): Observable<any>{
-    return this.http.get(`${this.apiUrl}/api/database/song-rank-within-category`);
+  QueryE(category:string): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/song-rank-within-category?category=${category}`);
   }
 
   QueryF(): Observable<any>{
