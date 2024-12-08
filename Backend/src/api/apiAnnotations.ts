@@ -293,9 +293,9 @@
 // Query 4
 /**
  * @swagger
- * /api/database/song-trend-over-time:
+ * /api/database/top-artists:
  *   get:
- *     summary: Retrieve song trends and statistics for artists with at least 5 songs.
+ *     summary: Retrieve top artists and statistics.
  *     description: |
  *       This endpoint retrieves statistical information for artists who have at least 5 songs in the database.
  *       It includes:
