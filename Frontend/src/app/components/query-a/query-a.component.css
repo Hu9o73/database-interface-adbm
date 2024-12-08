@@ -1,0 +1,10 @@
+th {
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  th .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
