@@ -233,7 +233,7 @@
  *     summary: Retrieve song trends over time.
  *     description: Fetches a list of songs with their release date, popularity, and a moving average of popularity over a time window of 30 preceding and 30 following entries. The results are ordered by the release date.
  *     tags:
- *       - Songs
+ *       - Database
  *     responses:
  *       200:
  *         description: A list of songs with their release date, popularity, and moving average popularity.

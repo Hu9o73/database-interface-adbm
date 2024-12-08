@@ -18,4 +18,8 @@ export class ApiService {
   QueryA(): Observable<any>{
     return this.http.get(`${this.apiUrl}/api/database/most-popular-per-artist`);
   }
+
+  QueryB(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/api/database/artist-above-average-popularity`);
+  }
 }
