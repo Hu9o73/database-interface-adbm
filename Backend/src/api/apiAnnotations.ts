@@ -462,7 +462,7 @@
 // Query 6
 /**
  * @swagger
- * /api/database/song-rank-within-category:
+ * /api/database/popular-high-energy:
  *   get:
  *     summary: Retrieve highly popular and energetic songs.
  *     description: |
