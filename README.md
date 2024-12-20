@@ -43,3 +43,21 @@ Front/Back-end small project to make the interactions with an oracle database ea
 
 ## Note:
 Part of a database management course. Feel free to contact me if you have questions about running this project. (It might be my hardest repo to install)
+
+## Images of the Interface:
+
+### Getting a song recommendation:
+![Reco](ImagesInterface/Reco.png)
+
+### Didn't find any recommendation based on your parameters:
+![NoReco](ImagesInterface/NoReco.png)
+
+### A few queries, ordered or not:
+![Query4](ImagesInterface/Query4_OrderAvgPop.png)
+
+![Query5A](ImagesInterface/Query5_High_OrderSong.png)
+
+![Query5B](ImagesInterface/Query5_Low_NoOrder.png)
+
+![Query5C](ImagesInterface/Query5_Low_OrderEnergy.png)
+
