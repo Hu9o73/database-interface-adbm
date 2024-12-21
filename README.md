@@ -8,7 +8,17 @@ Front/Back-end small project to make the interactions with an oracle database ea
 
 ### Database
 
-- Informations coming soon...
+- Make sure you have Oracle and a working PBD on your computer.
+- Open the `SQL Code/CreationBDD` file.
+- Create the table called `staging_spotify_songs`.
+    - This table will let us convert the .csv file into a huge table, later split into the tables we'll use 
+    - Right click on the table, then `import data`, import the file `Dataset.csv`
+    - Next until you're asked to match the csv columns name to the table's names.
+- Go on with the dataset creation (using the corresponding SQL file)
+    - Other tables will be created using the data in `staging_spotify_songs`
+- Then create the functions, procedures, triggers, etc...
+- You can either explore the dataset purely using SQL commands, or run the code inside of `SQL Code/ModificationsForWebIntegration.sql` to adapt some procedures to match sequelize's requisits.
+- After running the code, you can go on with the interface creation (it's way easier !)
 
 ### Backend
 
@@ -32,4 +42,22 @@ Front/Back-end small project to make the interactions with an oracle database ea
 
 
 ## Note:
-App made to get hands-on experience with Angular, NodeJs, HTML, Typescript, Bootstrap and Oracle database interactions.
+Part of a database management course. Feel free to contact me if you have questions about running this project. (It might be my hardest repo to install)
+
+## Images of the Interface:
+
+### Getting a song recommendation:
+![Reco](ImagesInterface/Reco.png)
+
+### Didn't find any recommendation based on your parameters:
+![NoReco](ImagesInterface/NoReco.png)
+
+### A few queries, ordered or not:
+![Query4](ImagesInterface/Query4_OrderAvgPop.png)
+
+![Query5A](ImagesInterface/Query5_High_OrderSong.png)
+
+![Query5B](ImagesInterface/Query5_Low_NoOrder.png)
+
+![Query5C](ImagesInterface/Query5_Low_OrderEnergy.png)
+
