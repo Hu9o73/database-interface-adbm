@@ -4,7 +4,9 @@
   "description": "Backend for Database Interface Project (ADBM course)",
   "main": "src/index.ts",
   "scripts": {
-    "start": "npx ts-node src/index.ts"
+    "start": "npx ts-node src/index.ts",
+    "build": "npx tsc",
+    "startBuild": "node dist/index.js"
   },
   "author": "Hugo BONNELL",
   "license": "ISC",
